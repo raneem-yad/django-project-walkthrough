@@ -14,6 +14,16 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
 
+    class Meta:
+        # The - prefix on created_on indicates the posts are displayed in descending order of creation date.
+        # If no leading - is used, then the order is ascending,
+        # and if a ? prefix is used, then the order is randomised.
+        ordering = ["-created_on"]
+
+    def __str__(self):
+        # We pass self into the __str__ method to provide access to the Model instance's attributes and data,
+        # which allows us to customise the string representation of the instance.
+        return f"The title of this post is {self.title}"
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
