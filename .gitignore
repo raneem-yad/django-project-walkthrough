@@ -9,3 +9,5 @@ node_modules/
 cloudinary_python.txt
 myenv/
 .idea/
+.venv/
+hello_world/fixtures/
